@@ -1,12 +1,9 @@
 import LoginForm from "../LoginForm/LoginForm";
-
+import authContext from "../../store";
+import { useContext } from "react";
 const Login = () => {
-  return (
-    <div className="w-50 p-3">
-      <div className="w-50 p-3">
-        <LoginForm />
-      </div>
-    </div>
-  );
+  let auth = useContext(authContext);
+
+  return !auth.user ? <LoginForm /> : <h2>Ya estás logueado </h2>;
 };
 export default Login;

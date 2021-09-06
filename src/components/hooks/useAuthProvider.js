@@ -21,29 +21,42 @@ export default function useAuthProvider() {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    //TODO  chequear si ya hay token guardado en sessionStorage
+    let data = localStorage.getItem("loggedHeroAppUser");
+    data = JSON.parse(data);
+    const token = data && data["token"];
+    if (token) {
+      console.log("Ya existe un user", token);
+      setUser(token);
+    }
   }, []);
 
   const signin = async (credentials, cb) => {
     try {
-      MySwal.fire({
-        icon: "error",
-        title: `Vaya, ha ocurrido un error al autenticar`,
-        footer: "Credenciales inválidas",
-      });
-      const user = await authService.login(credentials, cb);
+      const { data: user } = await authService.login(credentials, cb);
+      localStorage.setItem("loggedHeroAppUser", JSON.stringify(user));
 
-      setUser(user);
+      setUser(user.token);
+      MySwal.fire({
+        icon: "success",
+        title: `Bienvenido!, es un gusto verte de vuelta`,
+        footer: "Inicio de sesión exitoso",
+      });
       cb();
     } catch (error) {
       if (error.message) {
         console.log(JSON.stringify(error));
+        MySwal.fire({
+          icon: "error",
+          title: `Vaya, ha ocurrido un error al autenticar`,
+          footer: "Credenciales inválidas",
+        });
       }
     }
   };
 
   const signout = (cb) => {
     setUser(null);
+    localStorage.removeItem("loggedHeroAppUser");
     cb();
   };
 

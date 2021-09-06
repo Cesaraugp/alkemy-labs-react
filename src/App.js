@@ -4,15 +4,14 @@ import { ProvideAuth } from "./store";
 import AuthButton from "./components/authButton/authButton";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import { Home, Login, PrivatePage } from "./components/Pages";
+import Header from "./components/Header/Header";
 
 export default function App() {
   return (
     <ProvideAuth>
       <Router>
-        <div className="container">
-          <AuthButton />
-
-          <ul>
+        <Header />
+        {/*  <ul>
             <li>
               <Link to="/public">Public Page</Link>
             </li>
@@ -20,16 +19,14 @@ export default function App() {
               <Link to="/protected">Protected Page</Link>
             </li>
           </ul>
-
+ */}{" "}
+        <div className="container h-100 d-flex justify-content-center">
           <Switch>
-            <Route path="/public">
-              <Home />
-            </Route>
             <Route path="/login">
               <Login />
             </Route>
-            <PrivateRoute path="/protected">
-              <PrivatePage />
+            <PrivateRoute path="/home">
+              <Home />
             </PrivateRoute>
           </Switch>
         </div>
