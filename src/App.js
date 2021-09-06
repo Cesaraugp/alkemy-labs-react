@@ -1,19 +1,13 @@
 import React from "react";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-} from "react-router-dom";
-import { ProvideAuth } from './store';
-import LoginForm from './components/LoginForm/LoginForm';
-import AuthButton from './components/authButton/authButton';
-import PrivateRoute from './components/PrivateRoute/PrivateRoute';
-import { Home,PrivatePage} from './components/pages';
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { ProvideAuth } from "./store";
+import AuthButton from "./components/authButton/authButton";
+import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
+import { Home, Login, PrivatePage } from "./components/Pages";
 
 export default function App() {
   return (
-    <ProvideAuth > 
+    <ProvideAuth>
       <Router>
         <div className="container">
           <AuthButton />
@@ -32,7 +26,7 @@ export default function App() {
               <Home />
             </Route>
             <Route path="/login">
-              <LoginForm />
+              <Login />
             </Route>
             <PrivateRoute path="/protected">
               <PrivatePage />
