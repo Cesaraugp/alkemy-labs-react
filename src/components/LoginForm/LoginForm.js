@@ -1,28 +1,21 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import {
-  Container,
-  Row,
-  Col,
-  Card,
-  CardBody,
-  CardTitle,
-  Button,
-  Jumbotron,
-} from "reactstrap";
+import { Row, Col, Card, CardBody, CardTitle, Button } from "reactstrap";
 import { useHistory, useLocation } from "react-router-dom";
-import { useContext } from "react";
-import authContext from "../../store";
+import { useSelector, useDispatch } from "react-redux";
+import { logIn } from "../../reducers/authReducer";
 
 import formikErrorMessage from "../FormErrorAlert/FormErrorAlert";
 
 const LoginForm = () => {
   let history = useHistory();
   let location = useLocation();
-  let auth = useContext(authContext);
+  const userState = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
 
   let { from } = location.state || { from: { pathname: "/" } };
   let login = (credentials) => {
-    auth.signin(credentials, () => history.replace(from));
+    console.log(credentials);
+    dispatch(logIn(credentials));
   };
 
   return (
@@ -45,8 +38,8 @@ const LoginForm = () => {
             }
             return errors;
           }}
-          onSubmit={(values, { setSubmitting }) => {
-            login(values);
+          onSubmit={async (values, { setSubmitting }) => {
+            await login(values);
             setSubmitting(false);
           }}
         >
@@ -60,7 +53,7 @@ const LoginForm = () => {
                   <Row className="d-flex justify-content-center align-items-center h-100">
                     <Col sm="12">
                       <Row></Row>
-                      <div class="form-group">
+                      <div className="form-group">
                         <Row>
                           <Field
                             type="email"

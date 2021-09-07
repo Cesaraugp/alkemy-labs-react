@@ -1,4 +1,5 @@
 import React, { useContext, useState } from "react";
+import { useSelector } from "react-redux";
 import {
   Collapse,
   Navbar,
@@ -13,10 +14,10 @@ import {
   DropdownItem,
 } from "reactstrap";
 import AuthButton from "../authButton/authButton";
-import authContext from "../../store";
 
 const Header = (props) => {
-  let auth = useContext(authContext);
+  let auth = useSelector((state) => state.auth);
+
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
@@ -28,7 +29,7 @@ const Header = (props) => {
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           {auth.user ? (
-            <Nav right className="mr-auto" navbar>
+            <Nav className="mr-auto" navbar>
               <NavItem>
                 <NavLink href="/home/">Home</NavLink>
               </NavItem>

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import authService from "../../services/auth";
+import authService from "../services/auth";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 
@@ -24,12 +24,12 @@ export default function useAuthProvider() {
     let data = localStorage.getItem("loggedHeroAppUser");
     data = JSON.parse(data);
     const token = data && data["token"];
-    if (token) {
+    if (token && !user) {
       console.log("Ya existe un user", token);
-      setUser(token);
+      setUser({ ...user, token });
     }
-  }, []);
-
+  }, [user]);
+  console.log(user);
   const signin = async (credentials, cb) => {
     try {
       const { data: user } = await authService.login(credentials, cb);

@@ -1,36 +1,40 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import { ProvideAuth } from "./store";
-import AuthButton from "./components/authButton/authButton";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import { Home, Login, PrivatePage } from "./components/Pages";
 import Header from "./components/Header/Header";
+import { useSelector, useDispatch } from "react-redux";
+
+import { setUser } from "./reducers/authReducer";
 
 export default function App() {
+  const userState = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const loggedUserJSON = window.localStorage.getItem("loggedHeroAppUser");
+    if (loggedUserJSON) {
+      const user = JSON.parse(loggedUserJSON);
+      if (!userState.user) {
+        dispatch(setUser(user));
+      }
+    }
+  }, [dispatch, userState.user]);
+
   return (
-    <ProvideAuth>
-      <Router>
-        <Header />
-        {/*  <ul>
-            <li>
-              <Link to="/public">Public Page</Link>
-            </li>
-            <li>
-              <Link to="/protected">Protected Page</Link>
-            </li>
-          </ul>
- */}{" "}
-        <div className="container h-100 d-flex justify-content-center">
-          <Switch>
-            <Route path="/login">
-              <Login />
-            </Route>
-            <PrivateRoute path="/home">
-              <Home />
-            </PrivateRoute>
-          </Switch>
-        </div>
-      </Router>
-    </ProvideAuth>
+    <Router>
+      {userState && <Header />}
+
+      <div className="container h-100 d-flex justify-content-center">
+        <Switch>
+          <PrivateRoute path="/home">
+            <Home />
+          </PrivateRoute>
+          <Route path="/login">
+            <Login />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
   );
 }

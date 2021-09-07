@@ -1,27 +1,22 @@
-
-import { useContext } from "react";
-import { Route,Redirect } from "react-router-dom";
-import authContext from "../../store";
+import { Route, Redirect } from "react-router-dom";
 
 export default function PrivateRoute({ children, ...rest }) {
-    
-    let auth = useContext(authContext);
-    return (
-      <Route
-        {...rest}
-        render={({ location }) =>
-          auth.user ? (
-            children
-          ) : (
-            <Redirect
-              to={{
-                pathname: "/login",
-                state: { from: location }
-              }}
-            />
-          )
-        }
-      />
-    );
-  }
-  
+  const token = localStorage.getItem("loggedHeroAppUser");
+  return (
+    <Route
+      {...rest}
+      render={({ location }) =>
+        token ? (
+          children
+        ) : (
+          <Redirect
+            to={{
+              pathname: "/login",
+              state: { from: location },
+            }}
+          />
+        )
+      }
+    />
+  );
+}

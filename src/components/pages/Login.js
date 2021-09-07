@@ -1,8 +1,7 @@
 import LoginForm from "../LoginForm/LoginForm";
-import authContext from "../../store";
-import { useContext } from "react";
+import { useSelector } from "react-redux";
 const Login = () => {
-  let auth = useContext(authContext);
+  let auth = useSelector((state) => state.auth);
 
   return !auth.user ? <LoginForm /> : <h2>Ya estás logueado </h2>;
 };

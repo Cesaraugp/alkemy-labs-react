@@ -1,21 +1,23 @@
-import { useContext } from "react";
 import { useHistory } from "react-router-dom";
-import authContext from "../../store";
 import { Button } from "reactstrap";
+import { useSelector, useDispatch } from "react-redux";
+import { logOut } from "../../reducers/authReducer";
+import { useEffect } from "react";
 
 export default function AuthButton() {
   let history = useHistory();
-  let auth = useContext(authContext);
+  let auth = useSelector((state) => state.auth);
+
+  const dispatch = useDispatch();
+
+  const handleLogout = () => {
+    dispatch(logOut());
+  };
 
   return auth.user ? (
     <p>
       Welcome!{" "}
-      <Button
-        color="danger"
-        onClick={() => {
-          auth.signout(() => history.push("/"));
-        }}
-      >
+      <Button color="danger" onClick={handleLogout}>
         Sign out
       </Button>
     </p>

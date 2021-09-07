@@ -1,3 +1,4 @@
+import SearchBar from "../SearchBar/SearchBar";
 export default function Home() {
-  return <h3>Public</h3>;
+  return <SearchBar />;
 }

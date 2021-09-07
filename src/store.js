@@ -1,18 +1,17 @@
-import {createContext} from 'react'
-import useAuthProvider from './components/hooks/useAuthProvider';
+import { createStore, combineReducers, applyMiddleware } from "redux";
+import thunk from "redux-thunk";
+import { composeWithDevTools } from "redux-devtools-extension";
+import authReducer from "./reducers/authReducer";
+import heroReducer from "./reducers/heroesReducer";
 
+const reducers = combineReducers({
+  auth: authReducer,
+  heroes: heroReducer,
+});
 
-const authContext = createContext();
+const store = createStore(
+  reducers,
+  composeWithDevTools(applyMiddleware(thunk))
+);
 
-
-export function ProvideAuth({ children }) {
-  const auth = useAuthProvider();
-  return (
-    <authContext.Provider value={auth}>
-      {children}
-    </authContext.Provider>
-  );
-}
-
-export default authContext
-
+export default store;
