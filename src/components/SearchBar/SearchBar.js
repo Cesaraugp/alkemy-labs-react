@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { Button, CardColumns } from "reactstrap";
+import { Button } from "reactstrap";
 import { Search as SearchIcon } from "react-bootstrap-icons";
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Formik, Form, Field } from "formik";
 import useFetch from "../../hooks/useFetch";
 import { useDispatch } from "react-redux";
 import {
@@ -13,14 +13,13 @@ import {
 const { REACT_APP_API_KEY } = process.env;
 
 const SearchBar = () => {
-  const [input, setInput] = useState(null);
+  const [input, setInput] = useState("");
   const dispatch = useDispatch();
 
   const { data, loading, error } = useFetch(
     `https://www.superheroapi.com/api.php/${REACT_APP_API_KEY}/search/${input}`
   );
   const handleChange = (e) => {
-    console.log(e.target.value);
     if (e.target.value !== "") setInput(e.target.value);
     else dispatch(clearResults()) && setInput(e.target.value);
   };

@@ -2,7 +2,6 @@ import { useHistory } from "react-router-dom";
 import { Button } from "reactstrap";
 import { useSelector, useDispatch } from "react-redux";
 import { logOut } from "../../reducers/authReducer";
-import { useEffect } from "react";
 
 export default function AuthButton() {
   let history = useHistory();

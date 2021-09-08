@@ -25,11 +25,9 @@ export default function useAuthProvider() {
     data = JSON.parse(data);
     const token = data && data["token"];
     if (token && !user) {
-      console.log("Ya existe un user", token);
       setUser({ ...user, token });
     }
   }, [user]);
-  console.log(user);
   const signin = async (credentials, cb) => {
     try {
       const { data: user } = await authService.login(credentials, cb);
@@ -44,7 +42,6 @@ export default function useAuthProvider() {
       cb();
     } catch (error) {
       if (error.message) {
-        console.log(JSON.stringify(error));
         MySwal.fire({
           icon: "error",
           title: `Vaya, ha ocurrido un error al autenticar`,

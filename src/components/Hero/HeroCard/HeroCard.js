@@ -1,13 +1,5 @@
 import React from "react";
-import {
-  Card,
-  CardImg,
-  CardTitle,
-  CardBody,
-  CardSubtitle,
-  CardText,
-  Button,
-} from "reactstrap";
+import { Card, CardImg, CardTitle, CardBody, Button } from "reactstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { addHero, removeHero } from "../../../reducers/heroesReducer";
 
@@ -22,23 +14,15 @@ const HeroCard = ({ hero }) => {
   };
 
   const handleRemoveHero = () => {
-    console.log(hero.id);
     dispatch(removeHero(hero.id));
   };
   return (
     <>
-      <Card>
-        <CardImg
-          top
-          width="100%"
-          alt="Card image cap"
-          src={hero.image.url}
-          alt="Card image cap"
-          style={{"maxHeight":"200px"}}
-        />
+      <Card className="h-100 my-3">
+        <CardImg top width="100%" alt="Card image cap" src={hero.image.url} />
         <CardBody>
           <CardTitle tag="p">{hero.name}</CardTitle>
-         {/*  <CardSubtitle tag="h6" className="mb-2 text-muted">
+          {/*  <CardSubtitle tag="h6" className="mb-2 text-muted">
             {hero.work.occupation}
           </CardSubtitle> */}
           {/* <CardText></CardText> */}

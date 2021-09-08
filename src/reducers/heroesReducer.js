@@ -18,7 +18,7 @@ export const removeHero = (id) => {
   };
 };
 
-const initializeHeroes = (userId) => {
+export const initializeHeroes = (userId) => {
   return async (dispatch) => {
     const heroes = await heroesService.getUserHeroes(userId);
     return {
@@ -37,11 +37,10 @@ const heroReducer = (state = [], action) => {
       return [...state, newHero];
     case "REMOVE_HERO":
       const { id: heroIdToRemove } = action.data;
-      console.log(heroIdToRemove);
       return [...state.filter((heroe) => heroe.id !== heroIdToRemove)];
     case "INITIALIZE_HEROES":
-      const { initialHeroes: heroes } = action.data;
-      return { heroes: action.data.heroes };
+      const { heroes: initialHeroes } = action.data;
+      return [...initialHeroes];
     default:
       return state;
   }

@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
-import { Home, Login, PrivatePage } from "./components/pages";
+import { Home, Login } from "./components/pages";
 import Header from "./components/Header/Header";
 import { useSelector, useDispatch } from "react-redux";
 
@@ -10,7 +10,7 @@ import { setUser } from "./reducers/authReducer";
 export default function App() {
   const userState = useSelector((state) => state.auth);
   const dispatch = useDispatch();
- 
+
   useEffect(() => {
     const loggedUserJSON = window.localStorage.getItem("loggedHeroAppUser");
     if (loggedUserJSON) {

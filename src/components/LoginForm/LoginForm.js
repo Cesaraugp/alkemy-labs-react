@@ -1,20 +1,14 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { Row, Col, Card, CardBody, CardTitle, Button } from "reactstrap";
-import { useHistory, useLocation } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { logIn } from "../../reducers/authReducer";
 
 import formikErrorMessage from "../FormErrorAlert/FormErrorAlert";
 
 const LoginForm = () => {
-  let history = useHistory();
-  let location = useLocation();
-  const userState = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
-  let { from } = location.state || { from: { pathname: "/" } };
   let login = (credentials) => {
-    console.log(credentials);
     dispatch(logIn(credentials));
   };
 

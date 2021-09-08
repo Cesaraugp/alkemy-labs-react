@@ -6,7 +6,6 @@ export const logIn = ({ email, password }) => {
       email,
       password,
     });
-    console.log(user);
     window.localStorage.setItem("loggedHeroAppUser", JSON.stringify(user));
     dispatch({
       type: "LOG_IN",

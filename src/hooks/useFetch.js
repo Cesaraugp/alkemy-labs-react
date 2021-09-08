@@ -15,7 +15,6 @@ function useFetch(url) {
       .get(url, {})
       .then((res) => {
         setLoading(false);
-        console.log(res);
         res.data.content && setData(res.data.results);
         res.data && res.data.response === "success" && setData(res.data);
         res.data.response === "error" && setError(res.data.error);
