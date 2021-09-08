@@ -34,12 +34,13 @@ const HeroCard = ({ hero }) => {
           alt="Card image cap"
           src={hero.image.url}
           alt="Card image cap"
+          style={{"maxHeight":"200px"}}
         />
         <CardBody>
-          <CardTitle tag="h5">{hero.name}</CardTitle>
-          <CardSubtitle tag="h6" className="mb-2 text-muted">
+          <CardTitle tag="p">{hero.name}</CardTitle>
+         {/*  <CardSubtitle tag="h6" className="mb-2 text-muted">
             {hero.work.occupation}
-          </CardSubtitle>
+          </CardSubtitle> */}
           {/* <CardText></CardText> */}
           <div className="d-flex justify-content-around">
             {!hasHeroe ? (

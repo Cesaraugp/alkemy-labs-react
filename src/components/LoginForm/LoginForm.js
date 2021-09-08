@@ -44,7 +44,7 @@ const LoginForm = () => {
           }}
         >
           {({ isSubmitting }) => (
-            <Card className="shadow  h-50 w-100 py-5 px-2">
+            <Card className="shadow w-100 py-5 px-2">
               <CardBody className="d-flex flex-column justify-content-center">
                 <CardTitle tag="h1" className="text-center mb-5">
                   Iniciar Sesión
