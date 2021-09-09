@@ -25,7 +25,7 @@ export default function App() {
     <Router>
       {userState && <Header />}
 
-      <div className="container h-100 d-flex justify-content-center">
+      <div className="container h-100 d-flex flex-column align-items-center">
         <Switch>
           <PrivateRoute path="/home">
             <Home />

@@ -3,20 +3,35 @@ import { Button, CardColumns } from "reactstrap";
 import { Search as SearchIcon } from "react-bootstrap-icons";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import useFetch from "../../hooks/useFetch";
-import HeroCard from "../Hero/HeroCard/HeroCard";
+import { useDispatch } from "react-redux";
+import {
+  clearResults,
+  setError,
+  setLoading,
+  setResults,
+} from "../../reducers/searchReducer";
 const { REACT_APP_API_KEY } = process.env;
 
 const SearchBar = () => {
-  const [input, setInput] = useState("");
+  const [input, setInput] = useState(null);
+  const dispatch = useDispatch();
 
   const { data, loading, error } = useFetch(
     `https://www.superheroapi.com/api.php/${REACT_APP_API_KEY}/search/${input}`
   );
   const handleChange = (e) => {
     console.log(e.target.value);
-    setInput(e.target.value);
+    if (e.target.value !== "") setInput(e.target.value);
+    else dispatch(clearResults()) && setInput(e.target.value);
   };
-  console.log(data);
+  useEffect(() => {
+    if (data && !error) dispatch(setResults(data.results));
+  }, [data, dispatch, error]);
+
+  useEffect(() => {
+    if (error && input && input.length > 1) dispatch(setError(error));
+    if (loading && input && !error) dispatch(setLoading(true));
+  }, [loading, error, dispatch, input]);
 
   return (
     <>
@@ -44,26 +59,6 @@ const SearchBar = () => {
                 >
                   <SearchIcon />
                 </Button>
-              </div>
-              <div>
-                INFORMATION HERES
-                {loading && <p>{loading}</p>}
-                {data && (
-                  <CardColumns
-                    style={{
-                      display: "grid",
-                      "grid-template-columns": "23% 23% 23% 23%",
-                      "grid-column-gap": "1rem",
-                      "grid-row-gap": "1rem",
-                      "justify-content": "center",
-                    }}
-                  >
-                    {data.map((el) => (
-                      <HeroCard className="w-25" key={el.id} hero={el} />
-                    ))}
-                  </CardColumns>
-                )}
-                {error && <p>{error}</p>}
               </div>
             </div>
           </Form>
