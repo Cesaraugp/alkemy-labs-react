@@ -1,6 +1,6 @@
 import React from "react";
 import HeroCard from "../HeroCard/HeroCard";
-import { Col, Row } from "reactstrap";
+import { Col, Row, Spinner, Alert } from "reactstrap";
 
 const HeroGrid = ({
   isLoading,
@@ -17,9 +17,17 @@ const HeroGrid = ({
         style={{ height: scrollable ? "75vh" : "auto" }}
       >
         {isLoading ? (
-          <p>{"loading"}</p>
+          <Spinner
+            color="danger"
+            style={{ width: "6rem", height: "6rem", marginTop: "5rem" }}
+            className="mx-auto"
+          >
+            {""}
+          </Spinner>
         ) : error ? (
-          <p>{errorMessage}</p>
+          <div style={{ height: "10%" }}>
+            <Alert color="danger">{errorMessage}</Alert>
+          </div>
         ) : (
           heroes && (
             <>
