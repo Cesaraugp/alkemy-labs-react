@@ -1,4 +1,4 @@
-import LoginForm from "../LoginForm/LoginForm";
+import LoginForm from "../components/LoginForm/LoginForm";
 import { useSelector } from "react-redux";
 const Login = () => {
   let auth = useSelector((state) => state.auth);

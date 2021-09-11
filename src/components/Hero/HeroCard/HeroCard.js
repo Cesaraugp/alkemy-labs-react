@@ -26,7 +26,7 @@ const HeroCard = ({ hero }) => {
             {hero.work.occupation}
           </CardSubtitle> */}
           {/* <CardText></CardText> */}
-          <div className="d-flex justify-content-around">
+          <div className="d-flex flex-sm-column justify-content-around">
             {!hasHeroe ? (
               <Button onClick={handleNewHero} color="success">
                 Add

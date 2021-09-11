@@ -1,7 +1,18 @@
+@import url("https://fonts.googleapis.com/css2?family=Marvel:ital,wght@1,700&family=Raleway&display=swap");
+
 body {
   height: 100vh;
+  font-family: "Raleway", sans-serif;
 }
 #root {
   height: 100%;
   /* overflow-y: hidden; */
+}
+.section_title {
+  font-size: 2rem;
+  font-family: "Marvel", sans-serif;
+  font-weight: 900;
+}
+.bg-purple {
+  background-color: #6f42c1;
 }

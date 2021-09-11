@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
-import { Home, Login } from "./components/pages";
+import { Home, Login } from "./Pages";
 import Header from "./components/Header/Header";
 import { useSelector, useDispatch } from "react-redux";
 
@@ -25,7 +25,7 @@ export default function App() {
     <Router>
       {userState && <Header />}
 
-      <div className="container h-100 d-flex flex-column align-items-center">
+      <div className="container h-100 mt-3 d-flex flex-column align-items-center">
         <Switch>
           <PrivateRoute path="/home">
             <Home />

@@ -1,24 +1,31 @@
 import React from "react";
 import HeroCard from "../HeroCard/HeroCard";
 import { Col, Row } from "reactstrap";
-import { useSelector } from "react-redux";
 
-const HeroGrid = () => {
-  const state = useSelector((state) => state.search);
+const HeroGrid = ({
+  isLoading,
+  error,
+  errorMessage,
+  heroes,
+  cols,
+  scrollable,
+}) => {
   return (
     <>
-      INFORMATION HERE
-      <Row className=" justify-content-between d-flex gap-sm-0 gap-xl-2 w-100">
-        {state.isLoading ? (
+      <Row
+        className={`${" m-0 mt-3 justify-content-between d-flex gap-sm-0 gap-xl-5 w-100 overflow-auto"}`}
+        style={{ height: scrollable ? "75vh" : "auto" }}
+      >
+        {isLoading ? (
           <p>{"loading"}</p>
-        ) : state.error ? (
-          <p>{state.errorMessage}</p>
+        ) : error ? (
+          <p>{errorMessage}</p>
         ) : (
-          state.searchResults && (
+          heroes && (
             <>
-              {state.searchResults.map((el) => (
-                <Col key={el.id} xs="12" sm="4" lg="3" xl="2">
-                  <HeroCard key={el.id} hero={el} style={{ height: "4%" }} />
+              {heroes.map((el) => (
+                <Col key={el.id} {...cols}>
+                  <HeroCard key={el.id} hero={el} />
                 </Col>
               ))}
             </>

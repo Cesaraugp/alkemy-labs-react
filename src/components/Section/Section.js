@@ -1,9 +1,16 @@
 import React, { useState } from "react";
-import { Collapse, Button, CardBody, Card } from "reactstrap";
+import { Collapse } from "reactstrap";
 
-const Section = (props) => {
-  const [collapse, setCollapse] = useState(false);
-  const [status, setStatus] = useState("Closed");
+const Section = ({
+  children,
+  color,
+  name,
+  roundedTop,
+  roundedBottom,
+  isOpen = false,
+}) => {
+  const [collapse, setCollapse] = useState(isOpen);
+  const [, setStatus] = useState("Closed");
 
   const onEntering = () => setStatus("Opening...");
 
@@ -16,11 +23,17 @@ const Section = (props) => {
   const toggle = () => setCollapse(!collapse);
 
   return (
-    <div>
-      <Button color="primary" onClick={toggle} style={{ marginBottom: "1rem" }}>
-        Toggle
-      </Button>
-      <h5>Current state: {status}</h5>
+    <div className="w-100 bg-light">
+      <div
+        onClick={toggle}
+        className={`bg-${color} rounded-${roundedTop ? "top" : ""} rounded-${
+          roundedBottom ? "bottom" : ""
+        }`}
+      >
+        <button className="btn btn-link text-decoration-none text-white shadow-none section_title">
+          {name}
+        </button>
+      </div>
       <Collapse
         isOpen={collapse}
         onEntering={onEntering}
@@ -28,13 +41,7 @@ const Section = (props) => {
         onExiting={onExiting}
         onExited={onExited}
       >
-        <Card>
-          <CardBody>
-            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus
-            terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer
-            labore wes anderson cred nesciunt sapiente ea proident.
-          </CardBody>
-        </Card>
+        {children}
       </Collapse>
     </div>
   );

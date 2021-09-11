@@ -1,10 +1,10 @@
 export const clearResults = () => ({ type: "CLEAR_RESULTS" });
 
-export const setResults = (searchResults) => {
+export const setResults = (heroes) => {
   return {
     type: "SET_RESULTS",
     data: {
-      searchResults,
+      heroes,
     },
   };
 };
@@ -32,12 +32,12 @@ export const setLoading = (isLoading) => {
 const searchReducer = (state = {}, action) => {
   switch (action.type) {
     case "SET_RESULTS":
-      const { searchResults } = action.data;
-      return { ...state, searchResults, isLoading: false, error: false };
+      const { heroes } = action.data;
+      return { ...state, heroes, isLoading: false, error: false };
     case "CLEAR_RESULTS":
       return {
         ...state,
-        searchResults: [],
+        heroes: [],
         isLoading: false,
         error: false,
         errorMessage: "",
@@ -49,7 +49,7 @@ const searchReducer = (state = {}, action) => {
       const { errorMessage } = action.data;
       return {
         ...state,
-        searchResults: [],
+        heroes: [],
         isLoading: false,
         error: true,
         errorMessage,

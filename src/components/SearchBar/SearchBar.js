@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { Button } from "reactstrap";
-import { Search as SearchIcon } from "react-bootstrap-icons";
 import { Formik, Form, Field } from "formik";
 import useFetch from "../../hooks/useFetch";
 import { useDispatch } from "react-redux";
@@ -20,8 +18,12 @@ const SearchBar = () => {
     `https://www.superheroapi.com/api.php/${REACT_APP_API_KEY}/search/${input}`
   );
   const handleChange = (e) => {
-    if (e.target.value !== "") setInput(e.target.value);
-    else dispatch(clearResults()) && setInput(e.target.value);
+    if (e.target.value !== "") {
+      setInput(e.target.value);
+      return;
+    } else {
+      dispatch(clearResults()) && setInput(e.target.value);
+    }
   };
   useEffect(() => {
     if (data && !error) dispatch(setResults(data.results));
@@ -41,7 +43,7 @@ const SearchBar = () => {
         }}
       >
         {(formikProps) => (
-          <Form className=" mt-5 mb-5 w-75">
+          <Form className="mb-3 mt-3">
             <div className="form-group has-feedback has-clear">
               <div className="input-group">
                 <Field
@@ -51,13 +53,6 @@ const SearchBar = () => {
                   onChange={handleChange}
                   value={input}
                 />
-                <Button
-                  className="input-group-append"
-                  type="submit"
-                  disabled={!formikProps.values.query}
-                >
-                  <SearchIcon />
-                </Button>
               </div>
             </div>
           </Form>
