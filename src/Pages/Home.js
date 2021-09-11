@@ -3,20 +3,24 @@ import SearchBar from "../components/SearchBar/SearchBar";
 import Section from "../components/Section/Section";
 import { CardBody, Col, Row } from "reactstrap";
 import { useSelector } from "react-redux";
+import HeroModal from "../components/Hero/HeroModal/HeroModal";
+import { useState } from "react";
 
 export default function Home() {
   const searchState = useSelector((state) => state.search);
   const heroesState = useSelector((state) => state.heroes);
   const searchCols = { xs: "12", sm: "4", lg: "3", xl: "2" };
   const teamCols = { xs: "12", sm: "4", lg: "3", xl: "3" };
+  const [hero, setHero] = useState({});
 
   return (
     <>
+      <HeroModal hero={hero} />
       <Section color="warning" name="Equipo" roundedTop={true} isOpen={true}>
         <Row className="m-auto">
           <Col xs="6" className="text-center p-3">
             <h1>Heroes! 👊</h1>
-            <HeroGrid heroes={heroesState} cols={teamCols} />
+            <HeroGrid heroes={heroesState} cols={teamCols} setHero={setHero} />
           </Col>
           <Col xs="6" className="text-center p-3">
             <h1>Estadísticas 📊</h1>
@@ -32,7 +36,12 @@ export default function Home() {
       <Section name="Buscador" color="purple">
         <SearchBar />
 
-        <HeroGrid {...searchState} cols={searchCols} scrollable={true} />
+        <HeroGrid
+          {...searchState}
+          cols={searchCols}
+          scrollable={true}
+          setHero={setHero}
+        />
       </Section>
     </>
   );

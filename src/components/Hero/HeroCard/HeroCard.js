@@ -3,7 +3,7 @@ import { Card, CardImg, CardTitle, CardBody, Button } from "reactstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { addHero, removeHero } from "../../../reducers/heroesReducer";
 
-const HeroCard = ({ hero }) => {
+const HeroCard = ({ hero, setHero }) => {
   const dispatch = useDispatch();
   const hasHeroe = useSelector((state) =>
     state.heroes.find((h) => h.id === hero.id)
@@ -15,6 +15,9 @@ const HeroCard = ({ hero }) => {
 
   const handleRemoveHero = () => {
     dispatch(removeHero(hero.id));
+  };
+  const seeHeroDetails = () => {
+    setHero(hero);
   };
   return (
     <>
@@ -36,7 +39,9 @@ const HeroCard = ({ hero }) => {
                 Remove
               </Button>
             )}
-            <Button color="primary">Details</Button>
+            <Button color="primary" onClick={seeHeroDetails}>
+              Details
+            </Button>
           </div>
         </CardBody>
       </Card>

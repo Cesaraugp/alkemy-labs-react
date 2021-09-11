@@ -9,6 +9,7 @@ const HeroGrid = ({
   heroes,
   cols,
   scrollable,
+  setHero,
 }) => {
   return (
     <>
@@ -33,7 +34,7 @@ const HeroGrid = ({
             <>
               {heroes.map((el) => (
                 <Col key={el.id} {...cols}>
-                  <HeroCard key={el.id} hero={el} />
+                  <HeroCard setHero={setHero} key={el.id} hero={el} />
                 </Col>
               ))}
             </>
