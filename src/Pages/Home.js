@@ -11,11 +11,11 @@ export default function Home() {
   const heroesState = useSelector((state) => state.heroes);
   const searchCols = { xs: "12", sm: "4", lg: "3", xl: "2" };
   const teamCols = { xs: "12", sm: "4", lg: "3", xl: "3" };
-  const [hero, setHero] = useState({});
+  const [hero, setHero] = useState(null);
 
   return (
     <>
-      <HeroModal hero={hero} />
+      {hero && <HeroModal hero={hero} />}
       <Section color="warning" name="Equipo" roundedTop={true} isOpen={true}>
         <Row className="m-auto">
           <Col xs="6" className="text-center p-3">
