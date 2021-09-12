@@ -2,13 +2,16 @@ import HeroGrid from "../components/Hero/HeroGrid/HeroGrid";
 import SearchBar from "../components/SearchBar/SearchBar";
 import Section from "../components/Section/Section";
 import { CardBody, Col, Row } from "reactstrap";
+import { Search } from "react-bootstrap-icons";
 import { useSelector } from "react-redux";
 
 export default function Home() {
   const searchState = useSelector((state) => state.search);
   const heroesState = useSelector((state) => state.heroes);
+
   const searchCols = { xs: "12", sm: "4", lg: "3", xl: "2" };
-  const teamCols = { xs: "12", sm: "4", lg: "3", xl: "3" };
+  //GRID DE HEROES YA SELECCIONADOS
+  //GRID DE HEROES YA SELECCIONADOS
 
   return (
     <>
@@ -16,7 +19,8 @@ export default function Home() {
         <Row className="m-auto">
           <Col xs="6" className="text-center p-3">
             <h1>Heroes! 👊</h1>
-            <HeroGrid heroes={heroesState} cols={teamCols} />
+            <Search />
+            <HeroGrid heroes={heroesState} />
           </Col>
           <Col xs="6" className="text-center p-3">
             <h1>Estadísticas 📊</h1>

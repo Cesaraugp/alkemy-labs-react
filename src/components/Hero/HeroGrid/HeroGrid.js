@@ -13,7 +13,7 @@ const HeroGrid = ({
   return (
     <>
       <Row
-        className={`${" m-0 mt-3 justify-content-between d-flex gap-sm-0 gap-xl-5 w-100 overflow-auto"}`}
+        className={`row-cols-1 row-cols-md-2 row-cols-xl-3 m-0 mt-3 w-100 overflow-auto`}
         style={{ height: scrollable ? "75vh" : "auto" }}
       >
         {isLoading ? (
@@ -24,7 +24,8 @@ const HeroGrid = ({
           heroes && (
             <>
               {heroes.map((el) => (
-                <Col key={el.id} {...cols}>
+                //AQUI ESTAN LAS CONFIGURACIONES DE LAS COLUMNAS DEL GRID,
+                <Col key={el.id} {...cols} className="mb-3">
                   <HeroCard key={el.id} hero={el} />
                 </Col>
               ))}

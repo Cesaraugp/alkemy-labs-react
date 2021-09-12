@@ -25,16 +25,15 @@ const Header = (props) => {
   return (
     <div>
       <Navbar color="light" light expand="md">
-        <NavbarBrand href="/">Hero App 🪓</NavbarBrand>
+        <NavbarBrand href="/home/" className="mx-3">
+          Hero App 🪓
+        </NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           {auth.user ? (
             <Nav className="mr-auto" navbar>
               <NavItem>
                 <NavLink href="/home/">Home</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink href="/protected/">GitHub</NavLink>
               </NavItem>
               <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle nav caret>

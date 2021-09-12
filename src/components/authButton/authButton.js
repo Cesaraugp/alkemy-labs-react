@@ -15,7 +15,6 @@ export default function AuthButton() {
 
   return auth.user ? (
     <p>
-      Welcome!{" "}
       <Button color="danger" onClick={handleLogout}>
         Sign out
       </Button>
