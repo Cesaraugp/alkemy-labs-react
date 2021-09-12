@@ -1,45 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Formik, Form, Field } from "formik";
-import useFetch from "../../hooks/useFetch";
-import { useDispatch } from "react-redux";
-import {
-  clearResults,
-  setError,
-  setLoading,
-  setResults,
-} from "../../reducers/searchReducer";
-const { REACT_APP_API_KEY } = process.env;
+import useSearch from "../../hooks/useSearch";
 
 const SearchBar = () => {
-  const [input, setInput] = useState("");
-  const dispatch = useDispatch();
-
-  const { data, loading, error } = useFetch(
-    `https://www.superheroapi.com/api.php/${REACT_APP_API_KEY}/search/${input}`
-  );
-  const handleChange = (e) => {
-    if (e.target.value !== "") {
-      setInput(e.target.value);
-      return;
-    } else {
-      dispatch(clearResults()) && setInput(e.target.value);
-    }
-  };
-  useEffect(() => {
-    if (data && !error) dispatch(setResults(data.results));
-  }, [data, dispatch, error]);
-
-  useEffect(() => {
-    if (error && input && input.length > 1) dispatch(setError(error));
-    if (loading && input && !error) dispatch(setLoading(true));
-  }, [loading, error, dispatch, input]);
-
+  const { search, setSearch } = useSearch();
+  const handleChange = (e) => setSearch(e.target.value);
   return (
     <>
       <Formik
         initialValues={{ query: "a" }}
         onSubmit={(values, { setSubmitting }) => {
-          setInput("");
+          setSearch("");
         }}
       >
         {(formikProps) => (
@@ -51,7 +22,7 @@ const SearchBar = () => {
                   name="query"
                   placeholder="Heroe"
                   onChange={handleChange}
-                  value={input}
+                  value={search}
                 />
               </div>
             </div>
