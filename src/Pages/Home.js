@@ -23,7 +23,12 @@ export default function Home() {
         <Row className="m-auto">
           <Col xs="6" className="text-center p-3">
             <h1>Heroes! 👊</h1>
-            <HeroGrid heroes={heroesState} cols={teamCols} setHero={setHero}>
+            <HeroGrid
+              isList={true}
+              heroes={heroesState}
+              cols={teamCols}
+              setHero={setHero}
+            >
               <HeroList />
             </HeroGrid>
           </Col>

@@ -10,12 +10,16 @@ const HeroGrid = ({
   scrollable,
   setHero,
   children,
+  isList,
 }) => {
   return (
     <>
       <Row
         className={`row-cols-1 row-cols-md-2 row-cols-xl-3 m-0 mt-3 w-100 overflow-auto`}
-        style={{ height: scrollable ? "75vh" : "auto" }}
+        style={{
+          height: scrollable ? "75vh" : "auto",
+          flexDirection: isList ? "column" : "auto",
+        }}
       >
         {isLoading ? (
           <Spinner
@@ -33,7 +37,11 @@ const HeroGrid = ({
           heroes && (
             <>
               {heroes.map((el) => (
-                <Col key={el.id} {...cols}>
+                <Col
+                  key={el.id}
+                  {...cols}
+                  className={`${isList ? "w-100" : ""}`}
+                >
                   {React.cloneElement(children, {
                     setHero,
                     key: el.id,

@@ -22,7 +22,9 @@ const HeroModal = ({ hero }) => {
     };
   }, [hero]);
 
-  const HeroStatsWrapper = () => <HeroStats powerstats={hero.powerstats} />;
+  const HeroStatsWrapper = () => (
+    <HeroStats powerstats={hero.powerstats} isMinimal={false} />
+  );
   const HeroDetailsWrapper = () => <HeroDetails hero={hero} />;
 
   const toggle = () => setModal(!modal);
