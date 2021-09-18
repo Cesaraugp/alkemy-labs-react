@@ -1,10 +1,12 @@
 import HeroGrid from "../components/Hero/HeroGrid/HeroGrid";
+import HeroCard from "../components/Hero/HeroCard/HeroCard";
 import SearchBar from "../components/SearchBar/SearchBar";
 import Section from "../components/Section/Section";
 import { CardBody, Col, Row } from "reactstrap";
 import { useSelector } from "react-redux";
 import HeroModal from "../components/Hero/HeroModal/HeroModal";
 import { useState } from "react";
+import HeroList from "../components/Hero/HeroList/HeroList";
 
 export default function Home() {
   const searchState = useSelector((state) => state.search);
@@ -21,7 +23,9 @@ export default function Home() {
         <Row className="m-auto">
           <Col xs="6" className="text-center p-3">
             <h1>Heroes! 👊</h1>
-            <HeroGrid heroes={heroesState} cols={teamCols} setHero={setHero} />
+            <HeroGrid heroes={heroesState} cols={teamCols} setHero={setHero}>
+              <HeroList />
+            </HeroGrid>
           </Col>
           <Col xs="6" className="text-center p-3">
             <h1>Estadísticas 📊</h1>
@@ -39,10 +43,17 @@ export default function Home() {
 
         <HeroGrid
           {...searchState}
+          heroes={
+            searchState.heroes
+              ? searchState.heroes.filter((el) => !heroesState.includes(el))
+              : []
+          }
           cols={searchCols}
           scrollable={true}
           setHero={setHero}
-        />
+        >
+          <HeroCard />
+        </HeroGrid>
       </Section>
     </>
   );

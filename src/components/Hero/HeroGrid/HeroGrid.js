@@ -1,5 +1,4 @@
 import React from "react";
-import HeroCard from "../HeroCard/HeroCard";
 import { Col, Row, Spinner, Alert } from "reactstrap";
 
 const HeroGrid = ({
@@ -10,6 +9,7 @@ const HeroGrid = ({
   cols,
   scrollable,
   setHero,
+  children,
 }) => {
   return (
     <>
@@ -34,7 +34,11 @@ const HeroGrid = ({
             <>
               {heroes.map((el) => (
                 <Col key={el.id} {...cols}>
-                  <HeroCard setHero={setHero} key={el.id} hero={el} />
+                  {React.cloneElement(children, {
+                    setHero,
+                    key: el.id,
+                    hero: el,
+                  })}
                 </Col>
               ))}
             </>

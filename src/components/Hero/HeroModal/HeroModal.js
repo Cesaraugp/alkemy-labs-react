@@ -23,6 +23,7 @@ const HeroModal = ({ hero }) => {
   }, [hero]);
 
   const HeroStatsWrapper = () => <HeroStats powerstats={hero.powerstats} />;
+  const HeroDetailsWrapper = () => <HeroDetails hero={hero} />;
 
   const toggle = () => setModal(!modal);
   return (
@@ -46,7 +47,7 @@ const HeroModal = ({ hero }) => {
               ></img>
             </Col>
             <Col xs="12" sm="6">
-              <Tab Details={HeroDetails} Stats={HeroStatsWrapper}></Tab>
+              <Tab Details={HeroDetailsWrapper} Stats={HeroStatsWrapper}></Tab>
             </Col>
           </Row>
         </ModalBody>
