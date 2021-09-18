@@ -1,5 +1,5 @@
 import React from "react";
-import { Progress } from "reactstrap";
+import { Col, Progress } from "reactstrap";
 
 const HeroStats = ({ powerstats, isMinimal }) => {
   const statsColorHandler = (statName) => {
@@ -30,7 +30,7 @@ const HeroStats = ({ powerstats, isMinimal }) => {
       case "power":
         return "💥";
       case "combat":
-        return "⚔";
+        return "🤺";
       case "intelligence":
         return "🧠";
       default:
@@ -54,16 +54,21 @@ const HeroStats = ({ powerstats, isMinimal }) => {
     <>
       {Object.keys(powerstats).map((stat, i) => (
         <div key={stat} className="d-flex align-items-center1">
-          <p className="mb-0">{statsEmojiHandler(stat)}</p>
-
-          <Progress
-            className="w-100 h-25 m-auto"
-            value={powerstats[stat]}
-            color={statsColorHandler(stat)}
-          />
-          <div className="text-center">
-            {powerstats[stat] !== "null" ? powerstats[stat] : "0"}%
-          </div>
+          <Col xs="4" className="text-center mx-auto">
+            <p className="mb-0">{statsEmojiHandler(stat)}</p>
+          </Col>
+          <Col xs="4" className="text-center mx-auto my-2">
+            <Progress
+              className="w-100 h-75 my-auto"
+              value={powerstats[stat]}
+              color={statsColorHandler(stat)}
+            />
+          </Col>
+          <Col xs="6" className="text-start ps-1">
+            <p className="mb-0 ">
+              {powerstats[stat] !== "null" ? powerstats[stat] : "0"}%
+            </p>
+          </Col>
         </div>
       ))}
     </>

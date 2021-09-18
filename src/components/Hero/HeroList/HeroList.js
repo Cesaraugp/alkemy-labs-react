@@ -13,7 +13,7 @@ const HeroList = ({ hero, setHero }) => {
           src={hero.image.url}
         ></CardImg>
         <Row className="w-50">
-          <h2 className="m-auto">{hero.name}</h2>
+          <h2 className="m-auto mt-0">{hero.name}</h2>
           <HeroButtons hero={hero} openHeroDetails={() => setHero(hero)} />
         </Row>
         <Row className="w-25 m-auto">
