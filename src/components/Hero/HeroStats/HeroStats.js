@@ -53,18 +53,22 @@ const HeroStats = ({ powerstats, isMinimal }) => {
   ) : (
     <>
       {Object.keys(powerstats).map((stat, i) => (
-        <div key={stat} className="d-flex align-items-center1">
-          <Col xs="4" className="text-center mx-auto">
+        <div
+          key={stat}
+          className="d-flex justify-content-center align-items-center gx-3"
+        >
+          <Col className="mx-auto">
             <p className="mb-0">{statsEmojiHandler(stat)}</p>
           </Col>
-          <Col xs="4" className="text-center mx-auto my-2">
+          <Col className="a">
             <Progress
-              className="w-100 h-75 my-auto"
+              style={{ height: "1rem" }}
+              className="w-100"
               value={powerstats[stat]}
               color={statsColorHandler(stat)}
             />
           </Col>
-          <Col xs="6" className="text-start ps-1">
+          <Col className="text-start ps-3">
             <p className="mb-0 ">
               {powerstats[stat] !== "null" ? powerstats[stat] : "0"}%
             </p>

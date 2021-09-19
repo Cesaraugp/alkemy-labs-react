@@ -9,7 +9,13 @@ const HeroCard = ({ hero, setHero }) => {
   return (
     <>
       <Card className="h-100 my-3">
-        <CardImg top width="100%" alt="Card image cap" src={hero.image.url} />
+        <CardImg
+          top
+          width="100%"
+          height="50%"
+          alt="Card image cap"
+          src={hero.image.url}
+        />
         <CardBody>
           <CardTitle tag="p">{hero.name}</CardTitle>
           <HeroButtons hero={hero} openHeroDetails={openHeroDetails} />

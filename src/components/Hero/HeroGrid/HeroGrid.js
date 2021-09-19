@@ -15,7 +15,7 @@ const HeroGrid = ({
   return (
     <>
       <Row
-        className={`row-cols-1 row-cols-md-2 row-cols-xl-3 m-0 mt-3 w-100 overflow-auto`}
+        className={`row-cols-1 row-cols-md-2 row-cols-xl-3 m-0 mt-3 w-100 overflow-auto gy-3`}
         style={{
           height: scrollable ? "75vh" : "auto",
           flexDirection: isList ? "column" : "auto",
