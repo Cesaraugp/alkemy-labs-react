@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, CardImg, CardTitle, CardBody, Button } from "reactstrap";
+import { Card, CardImg, CardTitle, CardBody } from "reactstrap";
 import HeroButtons from "../HeroButtons/HeroButtons";
 
 const HeroCard = ({ hero, setHero }) => {
