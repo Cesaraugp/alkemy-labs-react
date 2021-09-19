@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 import HeroModal from "../components/Hero/HeroModal/HeroModal";
 import { useState } from "react";
 import HeroList from "../components/Hero/HeroList/HeroList";
+import HeroTeamStats from "../components/Hero/HeroTeamStats/HeroTeamStats";
 
 export default function Home() {
   const searchState = useSelector((state) => state.search);
@@ -21,7 +22,7 @@ export default function Home() {
       {hero && <HeroModal hero={hero} />}
       <Section color="warning" name="Equipo" roundedTop={true} isOpen={true}>
         <Row className="m-auto">
-          <Col xs="6" className="text-center p-3">
+          <Col xs="12" sm="6" className="text-center p-3">
             <h1>Heroes! 👊</h1>
             <HeroGrid
               isList={true}
@@ -32,14 +33,13 @@ export default function Home() {
               <HeroList />
             </HeroGrid>
           </Col>
-          <Col xs="6" className="text-center p-3">
-            <h1>Estadísticas 📊</h1>
-            <CardBody className="vh-100 bg-light">
-              Anim pariatur cliche reprehenderit, enim eiusmod high life
-              accusamus terry richardson ad squid. Nihil anim keffiyeh
-              helvetica, craft beer labore wes anderson cred nesciunt sapiente
-              ea proident.
-            </CardBody>
+          <Col xs="12" sm="6" className="text-center p-3">
+            <Row className=" justify-content-center">
+              <h1>Estadísticas 📊</h1>
+              <Row className="bg-light m-auto">
+                {heroesState.length > 0 && <HeroTeamStats />}
+              </Row>
+            </Row>
           </Col>
         </Row>
       </Section>

@@ -5,10 +5,10 @@ const HeroDetails = ({ hero }) => {
     <div>
       <ListGroup>
         <ListGroupItem>
-          <b>Peso:</b> {hero.appearance.weight[0]}
+          <b>Peso:</b> {hero.appearance.weight[1]}
         </ListGroupItem>
         <ListGroupItem>
-          <b>Altura:</b> {hero.appearance.height[0]}
+          <b>Altura:</b> {hero.appearance.height[1]}
         </ListGroupItem>
         <ListGroupItem>
           <b>Nombre:</b> {hero.name}

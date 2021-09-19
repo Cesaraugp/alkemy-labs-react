@@ -1,23 +1,36 @@
-import React from "react";
+import React, { useState } from "react";
 import useHeroActions from "../../../hooks/useHeroActions";
 import { useSelector } from "react-redux";
-import { Button } from "reactstrap";
+import { Badge, Button, Tooltip } from "reactstrap";
 const HeroButtons = ({ hero, openHeroDetails }) => {
-  const hasHeroe = useSelector((state) =>
-    state.heroes.find((h) => h.id === hero.id)
+  const heroes = useSelector((state) => state.heroes);
+  const hasHeroe = heroes.find((h) => h.id === hero.id);
+  const { alignment } = hero.biography;
+  const alignmentTeamCounter = heroes.filter(
+    (h) => h.biography.alignment === alignment
   );
+
   const { handleNewHero, handleRemoveHero } = useHeroActions(hero);
   return (
     <div className="d-flex flex-sm-column justify-content-around gap-2 w-100">
-      <Button className="w-50" color="primary" onClick={openHeroDetails}>
+      <Button className="" color="primary" onClick={openHeroDetails}>
         Detalles
       </Button>
       {!hasHeroe ? (
-        <Button className="w-50" onClick={handleNewHero} color="success">
-          Agregar
-        </Button>
+        <>
+          <Button
+            id={"Tooltip-" + hero.id}
+            disabled={alignmentTeamCounter.length > 2}
+            onClick={handleNewHero}
+            color={alignmentTeamCounter.length > 2 ? "warning" : "success"}
+          >
+            {alignmentTeamCounter.length > 2
+              ? `Max. ${alignment === "good" ? "Heroe" : "Villano"}s Alcanzado!` //Villanos
+              : "Agregar"}
+          </Button>
+        </>
       ) : (
-        <Button className="w-50" onClick={handleRemoveHero} color="danger">
+        <Button className="" onClick={handleRemoveHero} color="danger">
           Quitar
         </Button>
       )}

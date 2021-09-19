@@ -70,7 +70,7 @@ const HeroStats = ({ powerstats, isMinimal }) => {
           </Col>
           <Col className="text-start ps-3">
             <p className="mb-0 ">
-              {powerstats[stat] !== "null" ? powerstats[stat] : "0"}%
+              {!isNaN(powerstats[stat]) ? powerstats[stat] : "0"}%
             </p>
           </Col>
         </div>
