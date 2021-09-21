@@ -1,43 +1,11 @@
 import React from "react";
 import { Col, Progress } from "reactstrap";
+import {
+  statsColorHandler,
+  statsEmojiHandler,
+} from "../../../utils/stats_utils";
 
 const HeroStats = ({ powerstats, isMinimal }) => {
-  const statsColorHandler = (statName) => {
-    switch (statName) {
-      case "strength":
-        return "danger";
-      case "speed":
-        return "warning";
-      case "durability":
-        return "success";
-      case "power":
-        return "purple";
-      case "combat":
-        return "orange";
-      default:
-        return "";
-    }
-  };
-
-  const statsEmojiHandler = (statName) => {
-    switch (statName) {
-      case "strength":
-        return "💪🏻";
-      case "speed":
-        return "🏃🏻‍♂️";
-      case "durability":
-        return "➕";
-      case "power":
-        return "💥";
-      case "combat":
-        return "🤺";
-      case "intelligence":
-        return "🧠";
-      default:
-        return "";
-    }
-  };
-
   return !isMinimal ? (
     <>
       {Object.keys(powerstats).map((stat, i) => (
