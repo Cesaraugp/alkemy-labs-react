@@ -2,14 +2,43 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import { Row, Col, Card, CardBody, CardTitle, Button } from "reactstrap";
 import { useDispatch } from "react-redux";
 import { logIn } from "../../reducers/authReducer";
+import withReactContent from "sweetalert2-react-content";
 
 import formikErrorMessage from "../FormErrorAlert/FormErrorAlert";
+import Swal from "sweetalert2";
+
+const MySwal = withReactContent(
+  Swal.mixin({
+    toast: true,
+    position: "top-end",
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+      toast.addEventListener("mouseenter", Swal.stopTimer);
+      toast.addEventListener("mouseleave", Swal.resumeTimer);
+    },
+  })
+);
 
 const LoginForm = () => {
   const dispatch = useDispatch();
 
   let login = (credentials) => {
-    dispatch(logIn(credentials));
+    dispatch(logIn(credentials))
+      .then((r) => {
+        MySwal.fire({
+          icon: "success",
+          title: `Bienvenido!, es un gusto verte de vuelta`,
+          footer: "Inicio de sesión exitoso",
+        });
+      })
+      .catch((e) => {
+        MySwal.fire({
+          icon: "error",
+          title: `Vaya, ha ocurrido un error al autenticar`,
+        });
+      });
   };
 
   return (

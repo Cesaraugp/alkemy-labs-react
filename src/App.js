@@ -33,6 +33,10 @@ export default function App() {
           <Route path="/login">
             <Login />
           </Route>
+
+          <Route path="/">
+            {!userState.user ? <Login /> : <h1>Bienvenido</h1>}
+          </Route>
         </Switch>
       </div>
     </Router>
