@@ -42,7 +42,7 @@ const LoginForm = () => {
   };
 
   return (
-    <Row className="w-100 my-auto">
+    <Row id="login_container" className="w-100 my-auto">
       <Col xs="12" sm="12" md="8" xl="6" className=" h-100 mx-auto">
         <Formik
           className="col-6 "
@@ -50,14 +50,14 @@ const LoginForm = () => {
           validate={(values) => {
             const errors = {};
             if (!values.email) {
-              errors.email = "Requerido";
+              errors.email = "Email Requerido";
             } else if (
               !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
             ) {
               errors.email = "Por favor ingresa un correo valido";
             }
             if (!values.password) {
-              errors.password = "Requerido";
+              errors.password = "Contraseña Requerida";
             }
             return errors;
           }}
@@ -79,6 +79,8 @@ const LoginForm = () => {
                       <div className="form-group">
                         <Row>
                           <Field
+                            data-testid="emailInput"
+                            id="email"
                             type="email"
                             name="email"
                             className="form-control"
@@ -90,6 +92,7 @@ const LoginForm = () => {
                         </Row>
                         <Row>
                           <Field
+                            data-testid="passwordInput"
                             type="password"
                             name="password"
                             className="mt-3"
@@ -101,6 +104,7 @@ const LoginForm = () => {
                         </Row>
                         <Row>
                           <Button
+                            data-testid="loginButton"
                             type="submit"
                             disabled={isSubmitting}
                             className="mt-3"

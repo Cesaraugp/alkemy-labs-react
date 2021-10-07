@@ -2,7 +2,7 @@ import HeroGrid from "../components/Hero/HeroGrid/HeroGrid";
 import HeroCard from "../components/Hero/HeroCard/HeroCard";
 import SearchBar from "../components/SearchBar/SearchBar";
 import Section from "../components/Section/Section";
-import { CardBody, Col, Row } from "reactstrap";
+import { Col, Row } from "reactstrap";
 import { useSelector } from "react-redux";
 import HeroModal from "../components/Hero/HeroModal/HeroModal";
 import { useState } from "react";
@@ -18,7 +18,7 @@ export default function Home() {
   const [hero, setHero] = useState(null);
 
   return (
-    <>
+    <div data-testid="hero-page">
       {hero && <HeroModal hero={hero} />}
       <Section color="warning" name="Equipo" roundedTop={true} isOpen={true}>
         <Row className="m-auto">
@@ -60,6 +60,6 @@ export default function Home() {
           <HeroCard />
         </HeroGrid>
       </Section>
-    </>
+    </div>
   );
 }
