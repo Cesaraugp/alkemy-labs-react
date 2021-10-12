@@ -8,6 +8,8 @@ import {
   Row,
   Col,
 } from "reactstrap";
+import PropTypes from "prop-types";
+
 const Tab = ({ Details, Stats }) => {
   const [activeTab, setActiveTab] = useState("1");
 
@@ -57,5 +59,7 @@ const Tab = ({ Details, Stats }) => {
     </div>
   );
 };
-
+Tab.propTypes = {};
 export default Tab;
+
+//TODO -> Pasar elementos como children y no como props!!!

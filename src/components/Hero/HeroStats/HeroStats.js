@@ -47,4 +47,5 @@ const HeroStats = ({ powerstats, isMinimal }) => {
   );
 };
 
+//TODO PropTyping
 export default HeroStats;

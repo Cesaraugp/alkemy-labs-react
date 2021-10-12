@@ -10,6 +10,7 @@ import {
 import HeroStats from "../HeroStats/HeroStats";
 import Tab from "../../Tab/Tab";
 import HeroDetails from "../HeroDetails/HeroDetails";
+import PropTypes from "prop-types";
 
 const HeroModal = ({ hero }) => {
   const [modal, setModal] = useState(false);
@@ -59,6 +60,10 @@ const HeroModal = ({ hero }) => {
       </Modal>
     </div>
   );
+};
+
+HeroModal.propTypes = {
+  hero: PropTypes.object.isRequired,
 };
 
 export default HeroModal;

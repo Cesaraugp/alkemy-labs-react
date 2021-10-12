@@ -1,5 +1,7 @@
 import React from "react";
-import { Formik, Form, Field } from "formik";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import formikErrorMessage from "../FormErrorAlert/FormErrorAlert";
+
 import useSearch from "../../hooks/useSearch";
 
 const SearchBar = () => {
@@ -8,9 +10,13 @@ const SearchBar = () => {
   return (
     <>
       <Formik
-        initialValues={{ query: "a" }}
-        onSubmit={(values, { setSubmitting }) => {
-          setSearch("");
+        initialValues={{ query: "" }}
+        validate={(values) => {
+          const errors = {};
+          if (!values.query) {
+            errors.search = "Ingresa un heroe/villano";
+          }
+          return errors;
         }}
       >
         {(formikProps) => (
@@ -23,6 +29,10 @@ const SearchBar = () => {
                   placeholder="Heroe"
                   onChange={handleChange}
                   value={search}
+                />
+                <ErrorMessage
+                  name="query"
+                  render={(msg) => formikErrorMessage(msg)}
                 />
               </div>
             </div>

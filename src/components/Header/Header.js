@@ -8,14 +8,10 @@ import {
   Nav,
   NavItem,
   NavLink,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
 } from "reactstrap";
 import AuthButton from "../authButton/authButton";
 
-const Header = (props) => {
+const Header = () => {
   let auth = useSelector((state) => state.auth);
 
   const [isOpen, setIsOpen] = useState(false);

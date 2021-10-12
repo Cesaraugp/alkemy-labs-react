@@ -56,5 +56,5 @@ const HeroGrid = ({
     </>
   );
 };
-
+//TODO Proptyping
 export default HeroGrid;

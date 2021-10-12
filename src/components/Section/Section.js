@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Collapse } from "reactstrap";
+import PropTypes from "prop-types";
 
 const Section = ({
   children,
@@ -45,6 +46,15 @@ const Section = ({
       </Collapse>
     </div>
   );
+};
+
+Section.propTypes = {
+  children: PropTypes.element,
+  color: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  roundedTop: PropTypes.bool,
+  roundedBottom: PropTypes.bool,
+  isOpen: PropTypes.bool,
 };
 
 export default Section;

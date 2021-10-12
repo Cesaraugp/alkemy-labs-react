@@ -1,6 +1,7 @@
 import React from "react";
 import { Card, CardImg, CardTitle, CardBody } from "reactstrap";
 import HeroButtons from "../HeroButtons/HeroButtons";
+import PropTypes from "prop-types";
 
 const HeroCard = ({ hero, setHero }) => {
   const openHeroDetails = () => {
@@ -23,6 +24,11 @@ const HeroCard = ({ hero, setHero }) => {
       </Card>
     </>
   );
+};
+
+HeroCard.propTypes = {
+  hero: PropTypes.object.isRequired,
+  setHero: PropTypes.func.isRequired,
 };
 
 export default HeroCard;

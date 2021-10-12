@@ -1,6 +1,7 @@
 import { Route, Redirect } from "react-router-dom";
+import PropTypes from "prop-types";
 
-export default function PrivateRoute({ children, ...rest }) {
+function PrivateRoute({ children, ...rest }) {
   const token = localStorage.getItem("loggedHeroAppUser");
   return (
     <Route
@@ -20,3 +21,9 @@ export default function PrivateRoute({ children, ...rest }) {
     />
   );
 }
+
+PrivateRoute.propTypes = {
+  children: PropTypes.element.isRequired,
+};
+
+export default PrivateRoute;

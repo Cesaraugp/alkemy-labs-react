@@ -56,76 +56,8 @@ const calculateMeasuresProm = (heroes) => {
   }
   return measuresAccumulated;
 };
+
 module.exports = {
   calculateMeasuresProm,
   calculatePowerstatsProm,
 };
-
-/* 
-
-const heroes = [
-  {
-    id: "82",
-    name: "Big Daddy",
-    powerstats: {
-      intelligence: "38",
-      strength: "10",
-      speed: "12",
-      durability: "32",
-      power: "22",
-      combat: "64",
-    },
-
-    appearance: {
-      gender: "Male",
-      race: "null",
-      height: ["-", "0 cm"],
-      weight: ["- lb", "0 kg"],
-      "eye-color": "-",
-      "hair-color": "-",
-    },
-  },
-  {
-    id: "81",
-    name: "Big Barda",
-    powerstats: {
-      intelligence: "88",
-      strength: "100",
-      speed: "79",
-      durability: "100",
-      power: "100",
-      combat: "100",
-    },
-
-    appearance: {
-      gender: "Female",
-      race: "New God",
-      height: ["6'2", "188 cm"],
-      weight: ["300 lb", "135 kg"],
-      "eye-color": "Blue",
-      "hair-color": "Black",
-    },
-  },
-  {
-    id: "198",
-    name: "Dagger",
-    powerstats: {
-      intelligence: "63",
-      strength: "10",
-      speed: "35",
-      durability: "42",
-      power: "52",
-      combat: "70",
-    },
-    appearance: {
-      gender: "Female",
-      race: "null",
-      height: ["Shaker Heights, Ohio"],
-      weight: ["116 lb", "52 kg"],
-      "eye-color": "Blue",
-      "hair-color": "Blond",
-    },
-  },
-];
-
-*/

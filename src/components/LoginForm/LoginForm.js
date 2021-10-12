@@ -37,6 +37,7 @@ const LoginForm = () => {
         MySwal.fire({
           icon: "error",
           title: `Vaya, ha ocurrido un error al autenticar`,
+          footer: "Inicio de sesión fallido",
         });
       });
   };

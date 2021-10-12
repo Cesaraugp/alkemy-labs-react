@@ -2,6 +2,7 @@ import React from "react";
 import { Card, CardImg, Row, Col } from "reactstrap";
 import HeroButtons from "../HeroButtons/HeroButtons";
 import HeroStats from "../HeroStats/HeroStats";
+import PropTypes from "prop-types";
 
 const HeroList = ({ hero, setHero }) => {
   return (
@@ -25,7 +26,10 @@ const HeroList = ({ hero, setHero }) => {
     </Card>
   );
 };
-
+HeroList.propTypes = {
+  hero: PropTypes.object.isRequired,
+  setHero: PropTypes.func.isRequired,
+};
 export default HeroList;
 
 //row-cols-1 row-cols-md-2 row-cols-xl-3 m-0 mt-3 w-100 overflow-auto

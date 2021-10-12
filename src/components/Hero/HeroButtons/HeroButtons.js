@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import useHeroActions from "../../../hooks/useHeroActions";
 import { useSelector } from "react-redux";
-import { Badge, Button, Tooltip } from "reactstrap";
+import { Button } from "reactstrap";
+import PropTypes from "prop-types";
+
 const HeroButtons = ({ hero, openHeroDetails }) => {
   const heroes = useSelector((state) => state.heroes);
   const hasHeroe = heroes.find((h) => h.id === hero.id);
@@ -36,6 +38,11 @@ const HeroButtons = ({ hero, openHeroDetails }) => {
       )}
     </div>
   );
+};
+
+HeroButtons.propTypes = {
+  hero: PropTypes.object.isRequired,
+  openHeroDetails: PropTypes.func.isRequired,
 };
 
 export default HeroButtons;

@@ -1,5 +1,7 @@
 import React from "react";
 import { ListGroup, ListGroupItem } from "reactstrap";
+import PropTypes from "prop-types";
+
 const HeroDetails = ({ hero }) => {
   return (
     <div>
@@ -32,16 +34,8 @@ const HeroDetails = ({ hero }) => {
     </div>
   );
 };
+HeroDetails.propTypes = {
+  hero: PropTypes.object.isRequired,
+};
 
 export default HeroDetails;
-
-/**
- * Peso.
-● Altura.
-● Nombre.
-● Alias.
-● Color de ojos.
-● Color de cabello.
-● Lugar de trabajo.
-
- */
