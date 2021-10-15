@@ -27,8 +27,17 @@ const HeroList = ({ hero, setHero }) => {
   );
 };
 HeroList.propTypes = {
-  hero: PropTypes.object.isRequired,
-  setHero: PropTypes.func.isRequired,
+  hero: PropTypes.shape({
+    id: PropTypes.string,
+    name: PropTypes.string,
+    powerstats: PropTypes.object,
+    biography: PropTypes.object,
+    appearance: PropTypes.object,
+    work: PropTypes.object,
+    connections: PropTypes.object,
+    image: PropTypes.object,
+  }),
+  setHero: PropTypes.func,
 };
 export default HeroList;
 

@@ -47,9 +47,16 @@ const Section = ({
     </div>
   );
 };
+const elementOrArrayOfElementPropType = PropTypes.oneOfType([
+  PropTypes.arrayOf(PropTypes.element),
+  PropTypes.element,
+]);
 
 Section.propTypes = {
-  children: PropTypes.element,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(elementOrArrayOfElementPropType),
+    elementOrArrayOfElementPropType,
+  ]),
   color: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   roundedTop: PropTypes.bool,

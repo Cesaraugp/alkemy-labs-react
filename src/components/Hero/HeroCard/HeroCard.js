@@ -25,10 +25,17 @@ const HeroCard = ({ hero, setHero }) => {
     </>
   );
 };
-
 HeroCard.propTypes = {
-  hero: PropTypes.object.isRequired,
+  hero: PropTypes.shape({
+    id: PropTypes.string,
+    name: PropTypes.string,
+    powerstats: PropTypes.object,
+    biography: PropTypes.object,
+    appearance: PropTypes.object,
+    work: PropTypes.object,
+    connections: PropTypes.object,
+    image: PropTypes.object,
+  }),
   setHero: PropTypes.func.isRequired,
 };
-
 export default HeroCard;

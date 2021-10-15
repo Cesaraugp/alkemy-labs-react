@@ -35,7 +35,16 @@ const HeroDetails = ({ hero }) => {
   );
 };
 HeroDetails.propTypes = {
-  hero: PropTypes.object.isRequired,
+  hero: PropTypes.shape({
+    id: PropTypes.string,
+    name: PropTypes.string,
+    powerstats: PropTypes.object,
+    biography: PropTypes.object,
+    appearance: PropTypes.object,
+    work: PropTypes.object,
+    connections: PropTypes.object,
+    image: PropTypes.object,
+  }).isRequired,
 };
 
 export default HeroDetails;
