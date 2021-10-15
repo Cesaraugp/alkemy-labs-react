@@ -36,6 +36,6 @@ HeroCard.propTypes = {
     connections: PropTypes.object,
     image: PropTypes.object,
   }),
-  setHero: PropTypes.func.isRequired,
+  setHero: PropTypes.func,
 };
 export default HeroCard;
