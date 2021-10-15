@@ -3,7 +3,7 @@ import { Col, Progress } from "reactstrap";
 import {
   statsColorHandler,
   statsEmojiHandler,
-} from "../../../utils/stats_utils";
+} from "../../../helpers/stats_utils";
 
 const HeroStats = ({ powerstats, isMinimal }) => {
   return !isMinimal ? (

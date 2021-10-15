@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { Badge, ListGroup, ListGroupItem } from "reactstrap";
 import utils from "./utils/heroTeamStats_utils";
-import { statsColorHandler } from "../../../utils/stats_utils";
+import { statsColorHandler } from "../../../helpers/stats_utils";
 
 const HeroTeamStats = () => {
   const heroes = useSelector((state) => state.heroes);
