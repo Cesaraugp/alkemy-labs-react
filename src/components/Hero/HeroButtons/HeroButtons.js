@@ -27,7 +27,7 @@ const HeroButtons = ({ hero, openHeroDetails }) => {
             color={alignmentTeamCounter.length > 2 ? "warning" : "success"}
           >
             {alignmentTeamCounter.length > 2
-              ? `Max. ${alignment === "good" ? "Heroe" : "Villano"}s Alcanzado!` //Villanos
+              ? `Max. ${alignment === "good" ? "Heroe" : "Villano"}s Alcanzado!`
               : "Agregar"}
           </Button>
         </>

@@ -59,5 +59,3 @@ Tab.propTypes = {
   ]),
 };
 export default Tab;
-
-//TODO -> Pasar elementos como children y no como props!!!

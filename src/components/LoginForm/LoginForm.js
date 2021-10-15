@@ -108,5 +108,4 @@ const LoginForm = () => {
     </Row>
   );
 };
-//TODO -> Convertir mySwal en hook
 export default LoginForm;

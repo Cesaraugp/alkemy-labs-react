@@ -26,7 +26,7 @@ export const setUser = (user) => {
 export const logOut = () => {
   return async (dispatch) => {
     window.localStorage.removeItem("loggedHeroAppUser");
-    window.location.href = `${window.location.href}`; //No-self assigned vars
+    window.location.href = `${window.location.href}`;
     dispatch({
       type: "LOG_OUT",
     });
