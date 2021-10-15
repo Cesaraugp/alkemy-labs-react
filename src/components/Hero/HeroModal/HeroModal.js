@@ -22,11 +22,6 @@ const HeroModal = ({ hero }) => {
     };
   }, [hero]);
 
-  const HeroStatsWrapper = () => (
-    <HeroStats powerstats={hero.powerstats} isMinimal={false} />
-  );
-  const HeroDetailsWrapper = () => <HeroDetails hero={hero} />;
-
   const toggle = () => setModal(!modal);
   return (
     <div>
@@ -49,7 +44,14 @@ const HeroModal = ({ hero }) => {
               ></img>
             </Col>
             <Col xs="12" sm="6">
-              <Tab Details={HeroDetailsWrapper} Stats={HeroStatsWrapper}></Tab>
+              <Tab>
+                <HeroDetails hero={hero} name="Details" />
+                <HeroStats
+                  name="Stats"
+                  powerstats={hero.powerstats}
+                  isMinimal={false}
+                />
+              </Tab>
             </Col>
           </Row>
         </ModalBody>
@@ -63,7 +65,16 @@ const HeroModal = ({ hero }) => {
 };
 
 HeroModal.propTypes = {
-  hero: PropTypes.object.isRequired,
+  hero: PropTypes.shape({
+    id: PropTypes.string,
+    name: PropTypes.string,
+    powerstats: PropTypes.object,
+    biography: PropTypes.object,
+    appearance: PropTypes.object,
+    work: PropTypes.object,
+    connections: PropTypes.object,
+    image: PropTypes.object,
+  }).isRequired,
 };
 
 export default HeroModal;
