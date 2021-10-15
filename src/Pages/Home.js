@@ -18,7 +18,7 @@ export default function Home() {
   const [hero, setHero] = useState(null);
 
   return (
-    <div data-testid="hero-page">
+    <div data-testid="hero-page" className="w-100">
       {hero && <HeroModal hero={hero} />}
       <Section color="warning" name="Equipo" roundedTop={true} isOpen={true}>
         <Row className="m-auto">
